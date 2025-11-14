@@ -1,5 +1,6 @@
 import pandas as pd
 import numpy as np
+import matplotlib.pyplot as plt
 # Read and store the csv
 data_frame = pd.read_csv("./Pandas Hackathon Files/HackathonDataset.csv")
 
