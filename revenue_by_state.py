@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Create the main DataFrame
-raw_data = pd.read_csv("./hackathon/HackathonDataset.csv")
+raw_data = pd.read_csv("./Pandas Hackathon Files/HackathonDataset.csv")
 
 # Fill all empty values with "", for easier sorting
 filled_data = raw_data.fillna("")
@@ -28,13 +28,13 @@ for state in states_list:
     # Add the values to a list to convert into a dataframe later
     data_list.append(state_vals)
 
+# create the final data frame, with both transactions and revenue.
+list_labels = "state", "transactions", "revenue"
+new_frame = pd.DataFrame(data_list, columns= list_labels)
 
 # only creates the graph when run directly
 if __name__ == "__main__":
     # Use MatPlotLib to create the double bar graph
-    list_labels = "state", "transactions", "revenue"
-    new_frame = pd.DataFrame(data_list, columns= list_labels)
-
     fig = plt.figure()
 
     ax = fig.add_subplot(111)

@@ -2,9 +2,9 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
+starterDataFrame = pd.read_csv("./Pandas Hackathon Files/HackathonDataset.csv")
+
 def peak_hours():
-    # Initializing my dataframe
-    starterDataFrame = pd.read_csv("./Pandas Hackathon Files/HackathonDataset.csv")
     # Finding max transations done at a point.
     max_transactions = starterDataFrame['transaction_hour'].value_counts().index[0]
     print(f"Maximum transaction occurs at: {max_transactions}")
