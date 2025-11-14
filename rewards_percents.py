@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 # Create the main DataFrame
-raw_data = pd.read_csv("./hackathon/HackathonDataset.csv")
+raw_data = pd.read_csv("./Pandas Hackathon Files/HackathonDataset.csv")
 
 # Fill all empty values with "", for easier sorting
 filled_data = raw_data.fillna("")

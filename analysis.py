@@ -82,11 +82,12 @@ def analysis(makeGraphs = False):
         
         if makeGraphs:
             # this creates each graph
-            plt.plot(x, y)
-            plt.title(f"{company} Monthly Spending Frequency")
-            plt.xlabel("Month")
-            plt.ylabel("Average Spending ($)")
-            plt.show()
+            #plt.plot(x, y)
+            #plt.title(f"{company} Monthly Spending Frequency")
+            #plt.xlabel("Month")
+            #plt.ylabel("Average Spending ($)")
+            #plt.show()
+            pass
         print({company}, "frequency completed.")
 
     revenuePerCompany = []
@@ -113,6 +114,9 @@ def analysis(makeGraphs = False):
 
         sizes = [100, 0]
         labels = ["Non Corporations", "Corporations"]
-        plt.pie(sizes, labels = labels, autopct = "%1.2f%%")
+        plt.pie(sizes, labels = labels, autopct="%1.2f%%")
         plt.title("All Yearly Discounts")
+        plt.legend(labels, loc="lower right")
         plt.show()
+
+analysis(True)
