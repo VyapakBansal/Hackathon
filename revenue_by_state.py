@@ -32,6 +32,9 @@ for state in states_list:
 list_labels = "state", "transactions", "revenue"
 new_frame = pd.DataFrame(data_list, columns= list_labels)
 
+max_state_revenue = new_frame.loc[:,"revenue"].max()
+max_state_transactions = new_frame.loc[:,"transactions"].max()
+
 # Use MatPlotLib to create the double bar graph
 fig = plt.figure()
 

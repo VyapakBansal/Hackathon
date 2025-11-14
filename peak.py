@@ -9,7 +9,7 @@ def peak_hours():
     max_transactions = starterDataFrame['transaction_hour'].value_counts().index[0]
     print(f"Maximum transactions occur at: {max_transactions}")
     # Converting my transaction hours to a date time data structure
-    starterDataFrame["transaction_hour"] = pd.to_datetime(starterDataFrame["transaction_hour"], format = '%y%m%d')
+    starterDataFrame["transaction_hour"] = pd.to_datetime(starterDataFrame["transaction_hour"])
     # Rounding down the time stamps to fit in an hour frame.
     starterDataFrame["hour_only"] = starterDataFrame["transaction_hour"].dt.floor("h")
     # Sorting after counting all the hour frames.
@@ -19,8 +19,6 @@ def peak_hours():
     plt.xlabel("Hour")
     plt.ylabel("Transactions")
     plt.show()
-
-
 def revenue_per_month():
     # Converting my transaction date to a date time data structure.
     starterDataFrame["transaction_date"] = pd.to_datetime(starterDataFrame["transaction_date"])
@@ -36,4 +34,3 @@ def revenue_per_month():
     plt.ylabel("Total Revenue ($)")
     plt.title("Revenue per Month")
     plt.show()
-
