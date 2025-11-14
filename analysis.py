@@ -13,6 +13,7 @@ toyotaAccount = "707-074-44"
 totalCompanies = ["Google", "Apple", "Microsoft", "Amazon", "Toyota"]
 
 starterDataFrame = pd.read_csv("./Pandas Hackathon Files/HackathonDataset.csv")
+starterDataFrame = starterDataFrame.fillna("")
 
 # this method gathers the specific account data for each company, and imports it into a list.
 def gatherAccountData(company):
@@ -50,9 +51,14 @@ def analyzeDiscounts(company, data):
     count = 0
 
     for items in data:
-        amount += float(starterDataFrame.iloc[items]['discount_amt'])
-        count += 1
-    return amount / count
+        curAmount = starterDataFrame.iloc[items]['discount_amt']
+        if not curAmount == '':
+            amount += float(curAmount)
+            count += 1
+
+    if count > 0:
+        amount = amount / count
+    return amount
 
 # y axis revenue, x axis frequency of purchases
 def analyzeFrequency(company, data):
