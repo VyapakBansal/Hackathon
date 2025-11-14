@@ -30,7 +30,7 @@ def analysis(makeGraphs = False):
                 accountData.append(index)
             elif row['rewards_number'] == toyotaAccount and company == "Toyota":
                 accountData.append(index)
-        print({company}, "data has been located.")
+        #print({company}, "data has been located.")
         return accountData
 
     # this method locates the average spending for each company based upon the data set.
@@ -43,7 +43,7 @@ def analysis(makeGraphs = False):
             curAmount = starterDataFrame.iloc[items]['order_amt'] # the curAmount contains a '$' sign
 
             amount += float(curAmount.replace('$', ''))
-        print({company}, "spending analyzed")
+        #print({company}, "spending analyzed")
         return amount / transactions # gets the average
 
     # this method determines the average amount of discounts applied. Does not take into account orders that did not have discounts as that would ruin the results.
@@ -88,7 +88,7 @@ def analysis(makeGraphs = False):
             #plt.ylabel("Average Spending ($)")
             #plt.show()
             pass
-        print({company}, "frequency completed.")
+        #print({company}, "frequency completed.")
 
     revenuePerCompany = []
     discountsPerCompany = []
@@ -103,7 +103,7 @@ def analysis(makeGraphs = False):
         print("The average discounts applied for", {company}, "is: $", avgDiscounts)
         discountsPerCompany.append(avgDiscounts)
         analyzeFrequency(company, accountData)
-    print("Spending Frequency and Averages completed.")
+    #print("Spending Frequency and Averages completed.")
 
     if makeGraphs:
         plt.bar(totalCompanies, revenuePerCompany)
