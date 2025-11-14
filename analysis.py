@@ -38,7 +38,7 @@ def analyzeSpending(company, data):
     amount = 0
     transactions = len(data)
     for items in data:
-        curAmount = sorted.iloc[items]['order_amt'] # the curAmount contains a '$' sign
+        curAmount = starterDataFrame.iloc[items]['order_amt'] # the curAmount contains a '$' sign
 
         amount += float(curAmount.replace('$', ''))
     print({company}, "spending analyzed")
@@ -50,7 +50,7 @@ def analyzeDiscounts(company, data):
     count = 0
 
     for items in data:
-        amount += float(sorted.iloc[items]['discount_amt'])
+        amount += float(starterDataFrame.iloc[items]['discount_amt'])
         count += 1
     return amount / count
 
@@ -62,8 +62,8 @@ def analyzeFrequency(company, data):
     date = [] # what is the current date for this transaction?
     amount = [] # what was the transaction amount?
     for items in data: # gathers up the date and amount per transaction and places them in a list
-        cur_date = sorted.iloc[items]["transaction_date"]
-        curAmount = sorted.iloc[items]['order_amt']
+        cur_date = starterDataFrame.iloc[items]["transaction_date"]
+        curAmount = starterDataFrame.iloc[items]['order_amt']
 
         n_date = cur_date.split('-')
         date.append(int(n_date[1]))
