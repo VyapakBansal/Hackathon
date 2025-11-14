@@ -9,7 +9,7 @@ print(f"Maximum transaction occurs at: {max_transactions}")
 # Converting my transaction hours to a date time data structure
 starterDataFrame["transaction_hour"] = pd.to_datetime(starterDataFrame["transaction_hour"])
 # Rounding down the time stamps to fit in an hour frame.
-starterDataFrame["hour_only"] = starterDataFrame["transaction_hour"].dt.floor("H")
+starterDataFrame["hour_only"] = starterDataFrame["transaction_hour"].dt.floor("h")
 # Sorting after counting all the hour frames.
 hour_counts = (starterDataFrame["hour_only"].value_counts().sort_index())
 
