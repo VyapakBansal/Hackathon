@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 import matplotlib.pyplot as plt
 
-def analysis():
+def analysis(makeGraphs = False):
     # collection of account numbers for locating each data set
     googleAccount = "600-613-00"
     appleAccount = "499-130-00"
@@ -80,12 +80,13 @@ def analysis():
             averageForMonth = averageForMonth / countForMonth
             y.append(averageForMonth) # once the average spending is well averaged, append to the y list for this month
         
-        # this creates each graph
-        plt.plot(x, y)
-        plt.title(f"{company} Monthly Spending Frequency")
-        plt.xlabel("Month")
-        plt.ylabel("Average Spending ($)")
-        plt.show()
+        if makeGraphs:
+            # this creates each graph
+            plt.plot(x, y)
+            plt.title(f"{company} Monthly Spending Frequency")
+            plt.xlabel("Month")
+            plt.ylabel("Average Spending ($)")
+            plt.show()
         print({company}, "frequency completed.")
 
     revenuePerCompany = []
@@ -103,14 +104,15 @@ def analysis():
         analyzeFrequency(company, accountData)
     print("Spending Frequency and Averages completed.")
 
-    plt.bar(totalCompanies, revenuePerCompany)
-    plt.title("All companies Yearly Spending")
-    plt.xlabel("Companies")
-    plt.ylabel("Spending ($)")
-    plt.show()
+    if makeGraphs:
+        plt.bar(totalCompanies, revenuePerCompany)
+        plt.title("All companies Yearly Spending")
+        plt.xlabel("Companies")
+        plt.ylabel("Spending ($)")
+        plt.show()
 
-    sizes = [100, 0]
-    labels = ["Non Corporations", "Corporations"]
-    plt.pie(sizes, labels = labels, autopct = "%1.2f%%")
-    plt.title("All Yearly Discounts")
-    plt.show()
+        sizes = [100, 0]
+        labels = ["Non Corporations", "Corporations"]
+        plt.pie(sizes, labels = labels, autopct = "%1.2f%%")
+        plt.title("All Yearly Discounts")
+        plt.show()
