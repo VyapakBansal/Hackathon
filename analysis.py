@@ -30,7 +30,7 @@ def analysis(makeGraphs = False):
                 accountData.append(index)
             elif row['rewards_number'] == toyotaAccount and company == "Toyota":
                 accountData.append(index)
-        print({company}, "data has been located.")
+        #print({company}, "data has been located.")
         return accountData
 
     # this method locates the average spending for each company based upon the data set.
@@ -43,7 +43,7 @@ def analysis(makeGraphs = False):
             curAmount = starterDataFrame.iloc[items]['order_amt'] # the curAmount contains a '$' sign
 
             amount += float(curAmount.replace('$', ''))
-        print({company}, "spending analyzed")
+        #print({company}, "spending analyzed")
         return amount / transactions # gets the average
 
     # this method determines the average amount of discounts applied. Does not take into account orders that did not have discounts as that would ruin the results.
@@ -82,12 +82,13 @@ def analysis(makeGraphs = False):
         
         if makeGraphs:
             # this creates each graph
-            plt.plot(x, y)
-            plt.title(f"{company} Monthly Spending Frequency")
-            plt.xlabel("Month")
-            plt.ylabel("Average Spending ($)")
-            plt.show()
-        print({company}, "frequency completed.")
+            #plt.plot(x, y)
+            #plt.title(f"{company} Monthly Spending Frequency")
+            #plt.xlabel("Month")
+            #plt.ylabel("Average Spending ($)")
+            #plt.show()
+            pass
+        #print({company}, "frequency completed.")
 
     revenuePerCompany = []
     discountsPerCompany = []
@@ -102,7 +103,7 @@ def analysis(makeGraphs = False):
         print("The average discounts applied for", {company}, "is: $", avgDiscounts)
         discountsPerCompany.append(avgDiscounts)
         analyzeFrequency(company, accountData)
-    print("Spending Frequency and Averages completed.")
+    #print("Spending Frequency and Averages completed.")
 
     if makeGraphs:
         plt.bar(totalCompanies, revenuePerCompany)
@@ -113,6 +114,9 @@ def analysis(makeGraphs = False):
 
         sizes = [100, 0]
         labels = ["Non Corporations", "Corporations"]
-        plt.pie(sizes, labels = labels, autopct = "%1.2f%%")
+        plt.pie(sizes, labels = labels, autopct="%1.2f%%")
         plt.title("All Yearly Discounts")
+        plt.legend(labels, loc="lower right")
         plt.show()
+
+analysis(True)
