@@ -7,19 +7,18 @@ starterDataFrame = pd.read_csv("./Pandas Hackathon Files/HackathonDataset.csv")
 def peak_hours():
     # Finding max transations done at a point.
     max_transactions = starterDataFrame['transaction_hour'].value_counts().index[0]
-    print(f"Maximum transaction occurs at: {max_transactions}")
+    print(f"Maximum transactions occur at: {max_transactions}")
     # Converting my transaction hours to a date time data structure
-    starterDataFrame["transaction_hour"] = pd.to_datetime(starterDataFrame["transaction_hour"])
+    starterDataFrame["transaction_hour"] = pd.to_datetime(starterDataFrame["transaction_hour"], format = '%y%m%d')
     # Rounding down the time stamps to fit in an hour frame.
     starterDataFrame["hour_only"] = starterDataFrame["transaction_hour"].dt.floor("h")
     # Sorting after counting all the hour frames.
     hour_counts = (starterDataFrame["hour_only"].value_counts().sort_index())
     # Plotting the graph using matplotlib
-    if __name__ == '__main__':
-        plt.plot(hour_counts.index, hour_counts.values)
-        plt.xlabel("Hour")
-        plt.ylabel("Transactions")
-        plt.show()
+    plt.plot(hour_counts.index, hour_counts.values)
+    plt.xlabel("Hour")
+    plt.ylabel("Transactions")
+    plt.show()
 
 
 def revenue_per_month():
@@ -32,10 +31,9 @@ def revenue_per_month():
     # Taking a sum of all the revenue by grouping them all together.
     monthly_revenue = starterDataFrame.groupby("year_month")["order_amt"].sum()
     # Plotting the graph using matplotlib
-    if __name__ == '__main__':
-        plt.bar(monthly_revenue.index.astype(str), monthly_revenue.values)
-        plt.xlabel("Month (YYYY-MM)")
-        plt.ylabel("Total Revenue ($)")
-        plt.title("Revenue per Month")
-        plt.show()
+    plt.bar(monthly_revenue.index.astype(str), monthly_revenue.values)
+    plt.xlabel("Month (YYYY-MM)")
+    plt.ylabel("Total Revenue ($)")
+    plt.title("Revenue per Month")
+    plt.show()
 

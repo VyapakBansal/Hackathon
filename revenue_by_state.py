@@ -32,27 +32,25 @@ for state in states_list:
 list_labels = "state", "transactions", "revenue"
 new_frame = pd.DataFrame(data_list, columns= list_labels)
 
-# only creates the graph when run directly
-if __name__ == "__main__":
-    # Use MatPlotLib to create the double bar graph
-    fig = plt.figure()
+# Use MatPlotLib to create the double bar graph
+fig = plt.figure()
 
-    ax = fig.add_subplot(111)
-    ax2 = ax.twinx()
+ax = fig.add_subplot(111)
+ax2 = ax.twinx()
 
-    width = 0.4
+width = 0.4
 
-    new_frame.transactions.plot(kind = 'bar', color = 'blue', ax = ax, width = width, position = 1)
-    new_frame.revenue.plot(kind = "bar", color = 'red', ax = ax2, width = width, position = 0)
+new_frame.transactions.plot(kind = 'bar', color = 'blue', ax = ax, width = width, position = 1)
+new_frame.revenue.plot(kind = "bar", color = 'red', ax = ax2, width = width, position = 0)
 
-    ax.set_ylabel('Transactions')
-    ax2.set_ylabel('Revenue')
-    plt.xlabel("State")
+ax.set_ylabel('Transactions')
+ax2.set_ylabel('Revenue')
+plt.xlabel("State")
 
-    state_abbr_list = ["AL","CA","FL","GA","MS", "SC", "TX", "WA"]
+state_abbr_list = ["AL","CA","FL","GA","MS", "SC", "TX", "WA"]
 
-    plt.xticks([0,1,2,3,4,5,6,7], state_abbr_list)
+plt.xticks([0,1,2,3,4,5,6,7], state_abbr_list)
 
-    plt.title("Revenue and Transactions per State")
+plt.title("Revenue and Transactions per State")
 
-    plt.show()
+plt.show()

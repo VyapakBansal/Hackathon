@@ -21,16 +21,13 @@ unique_users_with_both = transactions_with_both.drop_duplicates()
 percentage_with_rewards_number = (len(unique_users_with_rewards_number) / len(raw_data))
 percentage_with_both = len(unique_users_with_both) / len(filled_data)
 
+# create the labels and data for the pie chart using matplotlib
+labels = "No Account", "Account w/o\nMembership", "Accounts w/\nMembership"
+sizes = [1-percentage_with_rewards_number, percentage_with_rewards_number - percentage_with_both, percentage_with_both]
 
-# only creates the graph when run directly
-if __name__ == "__main__":
-    # create the labels and data for the pie chart using matplotlib
-    labels = "No Account", "Account w/o\nMembership", "Accounts w/\nMembership"
-    sizes = [1-percentage_with_rewards_number, percentage_with_rewards_number - percentage_with_both, percentage_with_both]
+fig, ax = plt.subplots()
+ax.pie(sizes, labels=labels, autopct = "%1.2f%%") 
 
-    fig, ax = plt.subplots()
-    ax.pie(sizes, labels=labels, autopct = "%1.2f%%") 
+plt.title("Account & Membership Percentages")
 
-    plt.title("Account & Membership Percentages")
-
-    plt.show()
+plt.show()
